@@ -224,7 +224,7 @@ func TestConnection(config *SMTPConfig) error {
 	return nil
 }
 
-func SendMailWithEmbeddedFilesUsingConfig(to, subject, htmlBody string, embeddedFiles map[string]io.Reader, config *SMTPConfig, enableComplianceFeatures bool, ccMail string) error {
+func SendMailWithEmbeddedFilesUsingConfig(to, subject, htmlBody string, embeddedFiles map[string]io.Reader, config *SMTPConfig, ccMail string) error {
 	fromMail := mail.Address{Name: config.FeedbackName, Address: config.FeedbackEmail}
 	replyTo := mail.Address{Name: config.FeedbackName, Address: config.ReplyToAddress}
 
@@ -242,8 +242,8 @@ func SendMailWithEmbeddedFilesUsingConfig(to, subject, htmlBody string, embedded
 	return sendMailUsingConfigAdvanced(mail, config)
 }
 
-func SendMailUsingConfig(to, subject, htmlBody string, config *SMTPConfig, enableComplianceFeatures bool, ccMail string) error {
-	return SendMailWithEmbeddedFilesUsingConfig(to, subject, htmlBody, nil, config, enableComplianceFeatures, ccMail)
+func SendMailUsingConfig(to, subject, htmlBody string, config *SMTPConfig, ccMail string) error {
+	return SendMailWithEmbeddedFilesUsingConfig(to, subject, htmlBody, nil, config, ccMail)
 }
 
 // allows for sending an email with differing MIME/SMTP recipients

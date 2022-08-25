@@ -123,7 +123,7 @@ func TestSendMailUsingConfig(t *testing.T) {
 	//Delete all the messages before check the sample email
 	inbucket.DeleteMailBox(emailTo)
 
-	err2 := SendMailUsingConfig(emailTo, emailSubject, emailBody, cfg, true, emailCC)
+	err2 := SendMailUsingConfig(emailTo, emailSubject, emailBody, cfg, emailCC)
 	require.NoError(t, err2, "Should connect to the SMTP Server")
 
 	//Check if the email was send to the right email address
@@ -161,7 +161,7 @@ func TestSendMailWithEmbeddedFilesUsingConfig(t *testing.T) {
 		"test1.png": bytes.NewReader([]byte("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")),
 		"test2.png": bytes.NewReader([]byte("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")),
 	}
-	err2 := SendMailWithEmbeddedFilesUsingConfig(emailTo, emailSubject, emailBody, embeddedFiles, cfg, true, emailCC)
+	err2 := SendMailWithEmbeddedFilesUsingConfig(emailTo, emailSubject, emailBody, embeddedFiles, cfg, emailCC)
 	require.NoError(t, err2, "Should connect to the SMTP Server")
 
 	//Check if the email was send to the right email address
