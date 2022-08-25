@@ -1,1 +1,3 @@
-# go-mail
+# Go mail
+
+This package clone for mattermost
